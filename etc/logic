@@ -1,0 +1,104 @@
+bootstrap(setup views, start path)
+    bootstrap.go
+        SetupViews
+        SetupSessions
+        SetupWebsockets
+        SetupErrorHandlers
+        Configure
+        Bootstrap
+        Listen
+conf
+    db.go(database conf)
+        DbConf
+        MasterDbConfig
+        SlaveDbConfig
+    sysconf.go
+        SysTimeform
+        SysTimeformShort
+dao
+    superstar_Dao.go(index)
+        SuperstarDao struct
+        NewSuperstarDao
+        Get()
+        GetAll()
+        Search()
+        Delete()
+        Update()
+        Create()
+datasource
+    dbhelper.go(connect database)
+        InstanceMaster
+        InstanceSlave
+models
+    star_info.go(database info)
+        StarInfo
+services
+    superstar_service.go(admin)
+        SuperstarService struct
+        NewSuperstarService
+        GetAll()
+        Search()
+        Get()
+        Delete()
+        Update()
+        Create()
+web
+    controllers
+        admin.go(identity)
+            AdminController struct
+            Get()
+            GetEdit()
+            PostSave()
+            GetDelete()
+        index.go
+            IndexController struct
+            Get()
+            GetBy()
+            GetSearch()
+            GetClearcache()
+    middleware
+        identity
+            identity.go
+        basicauth.go
+            map["admin"]"password"
+    public
+        css
+            bootstrap.min.css
+        js
+            bootstrap.min.js
+            jquery.min.js
+    routes
+        routes.go(route group)
+            Configure(/,/admin)
+    viewmodels
+        readme.md
+    views
+        admin
+            edit.html
+            index.html
+            layout.html
+        shared
+            error.html
+            layout.html
+        index.html
+        info.html
+    main.go(nodes)
+    main2.go(nodes)
+
+
+type S1 struct{}
+func new() *S1{}
+func S1.Methods()
+
+路由和请求方法
+routes
+    Get()
+        route: /
+        methods: Get
+    PostSave()
+        route: /save
+        methods: Post
+
+// 路由分组, 对应不同的方法
+// "/" IndexController; "/admin/" AdminController
+// 前端通过请求路由, 调用已经定义好的对象方法
