@@ -9,6 +9,7 @@ import (
 // SuperstarService ...
 type SuperstarService interface {
 	GetAll() []models.StarInfo
+	GetLimit(count int, start int) []models.StarInfo
 	Search(country string) []models.StarInfo
 	Get(id int) *models.StarInfo
 	Delete(id int) error
@@ -29,6 +30,10 @@ func NewSuperstarService() SuperstarService {
 
 func (s *superstarService)GetAll() []models.StarInfo {
 	return s.dao.GetAll()
+}
+
+func (s *superstarService)GetLimit(count int, start int) []models.StarInfo {
+	return s.dao.GetLimit(count, start)
 }
 
 func (s *superstarService)Search(country string) []models.StarInfo {

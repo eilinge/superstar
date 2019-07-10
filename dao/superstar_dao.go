@@ -36,6 +36,15 @@ func (d *SuperstarDao) GetAll() []models.StarInfo {
 	}
 }
 
+func (d *SuperstarDao) GetLimit(count int, start int) []models.StarInfo {
+	datalist := make([]models.StarInfo, 0)
+	err := d.engine.Asc("id").Limit(count, start).Find(&datalist)
+	if err != nil {
+		return nil
+	}
+	return datalist
+}
+
 func (d *SuperstarDao) Search(country string) []models.StarInfo {
 	datalist := make([]models.StarInfo, 0)
 	err := d.engine.Where("country=?", country).

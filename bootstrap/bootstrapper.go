@@ -8,6 +8,7 @@ import (
 	"github.com/kataras/iris/sessions"
 	"github.com/kataras/iris/websocket"
 	"time"
+	"strconv"
 
 	"superstar/conf"
 )
@@ -60,6 +61,17 @@ func (b *Bootstrapper) SetupViews(viewsDir string) {
 		dt := time.Unix(int64(t), int64(0))
 		return dt.Format(conf.SysTimeform)
 	})
+
+	htmlEngine.AddFunc("PrePage", func(data int) string {
+		pageIndex := strconv.Itoa(data - 1)
+		return pageIndex
+	})
+
+	htmlEngine.AddFunc("NextPage", func(data int) string {
+		pageIndex := strconv.Itoa(data + 1)
+		return pageIndex
+	})
+
 	b.RegisterView(htmlEngine)
 }
 
