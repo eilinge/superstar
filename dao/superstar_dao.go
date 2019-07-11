@@ -28,7 +28,7 @@ func (d *SuperstarDao) Get(id int) *models.StarInfo {
 
 func (d *SuperstarDao) GetAll() []models.StarInfo {
 	datalist := make([]models.StarInfo, 0)
-	err := d.engine.Desc("id").Find(&datalist)
+	err := d.engine.Where("sys_status=?", 0).Desc("id").Find(&datalist)
 	if err != nil {
 		return datalist
 	} else {

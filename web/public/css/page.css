@@ -1,4 +1,4 @@
-pagination>li {
+#page > li >a {
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -8,4 +8,11 @@ pagination>li {
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
+}
+
+#page >li.sum {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    color: royalblue;
 }
